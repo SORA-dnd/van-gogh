@@ -4,6 +4,9 @@
 
 **Van Gogh** 是一个 Foundry VTT 模组，利用 AI 直接在游戏中为您的物品、法术和特性生成高质量、风格统一的图标。
 
+工作台按钮位于右侧的“日志文本”
+The Workbench button is located in the "Journal Entry" on the right.
+
 ## Features / 功能
 
 - **AI-Powered Generation**: Uses OpenAI's DALL-E 3 or compatible APIs to create unique icons based on item descriptions.
@@ -42,3 +45,4 @@ Go to `Game Settings` -> `Configure Settings` -> `Module Settings` -> `Van Gogh`
 
 *Disclaimer: This module sends item names and descriptions to a third-party AI service. Please ensure you comply with the service's terms of use.*
 *免责声明：此模组会将物品名称和描述发送到第三方 AI 服务。请确保您遵守该服务的使用条款。*
+
