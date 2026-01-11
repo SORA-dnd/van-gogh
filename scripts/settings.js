@@ -1,4 +1,12 @@
+import * as swade from "./systems/swade.js";
+
+const systemHandlers = {
+  swade: swade,
+};
+
 export const registerSettings = () => {
+  const bg3IconTypes = systemHandlers[game.system.id]?.bg3IconTypes || ["spell", "feat"];
+
   game.settings.register("van-gogh", "apiUrl", {
     name: "VAN-GOGH.Settings.ApiUrl.Name",
     hint: "VAN-GOGH.Settings.ApiUrl.Hint",
@@ -47,5 +55,28 @@ export const registerSettings = () => {
     type: String,
     filePicker: "folder",
     default: "",
+  });
+
+  game.settings.register("van-gogh", "imgSize", {
+    name: "VAN-GOGH.Settings.ImgSize.Name",
+    hint: "VAN-GOGH.Settings.ImgSize.Hint",
+    scope: "world",
+    config: true,
+    type: String,
+    choices: {
+      "256": "256x256",
+      "512": "512x512",
+      "1024": "1024x1024"
+    },
+    default: "1024",
+  });
+
+  game.settings.register("van-gogh", "bg3IconTypes", {
+    name: "VAN-GOGH.Settings.BG3IconTypes.Name",
+    hint: "VAN-GOGH.Settings.BG3IconTypes.Hint",
+    scope: "world",
+    config: true,
+    type: String,
+    default: bg3IconTypes.join(","),
   });
 };

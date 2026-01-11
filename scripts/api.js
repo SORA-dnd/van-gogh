@@ -5,6 +5,10 @@ export class VanGoghApi {
     const model = game.settings.get("van-gogh", "model");
     const apiType = game.settings.get("van-gogh", "apiType");
     let storagePath = game.settings.get("van-gogh", "storagePath");
+    const imgSize = game.settings.get("van-gogh", "imgSize") ?? "1024";
+
+    //bg3 style icon item types
+    const bg3IconTypes = (game.settings.get("van-gogh", "bg3IconTypes") ?? "spell,feat").replaceAll(/，/g, ",").split(",").map(t => t.trim());
 
     // Auto-fix URL
     apiUrl = apiUrl.replace(/\/+$/, ""); // Remove trailing slashes
@@ -46,7 +50,7 @@ export class VanGoghApi {
     const description = item.system.description?.value?.replace(/<[^>]*>?/gm, '') || item.name;
     let prompt;
 
-    if (item.type === "spell" || item.type === "feat") {
+    if (item.type && bg3IconTypes.includes(item.type)) {
       prompt = `Design a 2D game UI icon in the style of Baldur's Gate 3 "Status Effects" or "Conditions". It should be a stylized, glowing energy pictogram, NOT a realistic 3D object. The subject is:
 ${description}
 . Visual Style Instructions:
@@ -86,7 +90,7 @@ Aspect Ratio: Strictly 1:1 Square.`;
           model: model,
           prompt: prompt,
           n: 1,
-          size: "1024x1024",
+          size: `${imgSize}x${imgSize}`,
           // response_format: "b64_json" // Removed to improve compatibility with some API proxies
         };
       }

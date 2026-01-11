@@ -27,6 +27,11 @@
       "path": "languages/en.json"
     },
     {
+      "lang": "cn",
+      "name": "中文",
+      "path": "languages/zh.json"
+    },
+    {
       "lang": "zh",
       "name": "Chinese",
       "path": "languages/zh.json"
